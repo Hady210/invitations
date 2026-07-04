@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cypra — معرض الدعوات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d08a;
+      --dark: #1a1a1a;
+      --bg: #faf8f4;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── GATE ── */
+    #gate {
+      position: fixed;
+      inset: 0;
+      background: #0e0e0e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      z-index: 9999;
+      transition: opacity .5s, visibility .5s;
+    }
+
+    #gate.hidden { opacity: 0; visibility: hidden; }
+
+    .gate-logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .gate-sub {
+      color: #aaa;
+      font-size: .95rem;
+      letter-spacing: 1px;
+    }
+
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 300px;
+    }
+
+    .gate-form input {
+      width: 100%;
+      padding: 14px 18px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 2px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .gate-form input:focus { border-color: var(--gold); }
+
+    .gate-form button {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: #0e0e0e;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .gate-form button:hover { background: var(--gold-light); }
+
+    .gate-error {
+      color: #e05555;
+      font-size: .88rem;
+      min-height: 20px;
+    }
+
+    /* ── MAIN ── */
+    #main { display: none; }
+    #main.visible { display: block; }
+
+    header {
+      background: #0e0e0e;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .header-tag {
+      font-size: .8rem;
+      color: #888;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(160deg, #faf8f4 0%, #f0ebe0 100%);
+      border-bottom: 1px solid #e5ddd0;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 24px auto 0;
+    }
+
+    /* ── CARDS ── */
+    .section-label {
+      text-align: center;
+      padding: 60px 20px 10px;
+      font-size: .85rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: 700;
+      padding-bottom: 48px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.14);
+    }
+
+    .card-preview {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform .6s ease;
+    }
+
+    .card:hover .card-preview img { transform: scale(1.03); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .card:hover .card-overlay { opacity: 1; }
+
+    .card-overlay span {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border: 2px solid #fff;
+      padding: 10px 24px;
+      border-radius: 50px;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--gold);
+      color: #0e0e0e;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 1px;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: .9rem;
+      color: #777;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      font-size: .75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: #f5f0e8;
+      color: #7a6a4a;
+      font-weight: 500;
+    }
+
+    .card-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      text-align: center;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: background .2s;
+    }
+
+    .card-btn:hover { background: var(--gold); color: #0e0e0e; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0e0e0e;
+      color: #555;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .85rem;
+      letter-spacing: 1px;
+    }
+
+    footer span { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-logo">Cypra</div>
+  <div class="gate-sub">أدخل كلمة المرور للمتابعة</div>
+  <div class="gate-form">
+    <input type="password" id="pw" placeholder="••••••••" autocomplete="off" />
+    <button onclick="unlock()">دخول</button>
+    <div class="gate-error" id="err"></div>
+  </div>
+</div>
+
+<!-- MAIN DEMO -->
+<div id="main">
+
+  <header>
+    <div class="logo">Cypra</div>
+    <div class="header-tag">معرض الدعوات الخاص بك</div>
+  </header>
+
+  <section class="hero">
+    <h1>دعوتك تبدأ من هنا</h1>
+    <p>اختر التصميم الذي يعكس لحظتك، وسنصنع منه دعوة رقمية لا تُنسى</p>
+    <div class="gold-line"></div>
+  </section>
+
+  <p class="section-label">التصاميم المتاحة</p>
+  <h2 class="section-title">اختر تصميمك</h2>
+
+  <div class="cards">
+
+    <!-- Template 1 -->
+    <div class="card">
+      <div class="card-preview" onclick="window.open('1/index.html','_blank')">
+        <img src="1/_original/screenshot.png" alt="Template 1" />
+        <div class="card-overlay"><span>عرض التصميم</span></div>
+        <div class="card-tag">عربي</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">الكلاسيك الذهبي</div>
+        <div class="card-desc">تصميم أنيق بألوان دافئة مع لمسات ذهبية، مناسب للأفراح والمناسبات العربية</div>
+        <div class="card-features">
+          <span class="badge">عداد تنازلي</span>
+          <span class="badge">موسيقى</span>
+          <span class="badge">فيديو ترحيبي</span>
+          <span class="badge">تأكيد الحضور</span>
+        </div>
+        <a href="1/index.html" target="_blank" class="card-btn">عرض التصميم</a>
+      </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="card">
+      <div class="card-preview" onclick="window.open('2/index.html','_blank')">
+        <img src="2/_original/screenshot.png" alt="Template 2" />
+        <div class="card-overlay"><span>عرض التصميم</span></div>
+        <div class="card-tag">إنجليزي</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">الأخضر الملكي</div>
+        <div class="card-desc">تصميم فاخر بالأخضر الداكن والذهب، مثالي للحفلات الراقية والمناسبات الدولية</div>
+        <div class="card-features">
+          <span class="badge">عداد تنازلي</span>
+          <span class="badge">معرض صور</span>
+          <span class="badge">برنامج الحفل</span>
+          <span class="badge">خريطة</span>
+        </div>
+        <a href="2/index.html" target="_blank" class="card-btn">عرض التصميم</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    صُنع بـ ❤ بواسطة <span>Cypra</span> — جميع الحقوق محفوظة
+  </footer>
+
+</div>
+
+<script>
+  const PASSWORD = 'cypra2026';
+  const SESSION_KEY = 'cypra_demo_auth';
+
+  function unlock() {
+    const val = document.getElementById('pw').value.trim();
+    if (val === PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      document.getElementById('gate').classList.add('hidden');
+      document.getElementById('main').classList.add('visible');
+    } else {
+      document.getElementById('err').textContent = 'كلمة المرور غلط، حاول مرة ثانية';
+      document.getElementById('pw').value = '';
+      document.getElementById('pw').focus();
+    }
+  }
+
+  document.getElementById('pw').addEventListener('keydown', e => {
+    if (e.key === 'Enter') unlock();
+  });
+
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('main').classList.add('visible');
+  }
+</script>
+
+</body>
+</html>
