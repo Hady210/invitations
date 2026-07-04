@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>دعوة زفاف أحمد وهايدي — 18 / 5 / 2026</title>
+  <meta name="description" content="بداية فصل جديد من رحلتنا — يسعدنا حضوركم." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="assets/music.mp3" loop preload="auto"></audio>
+
+  <!-- Music toggle (top-left) -->
+  <button id="music-toggle" class="music-toggle" aria-label="تشغيل / إيقاف الموسيقى">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    </svg>
+  </button>
+
+  <!-- ===== Intro overlay ===== -->
+  <div id="intro" class="intro-wrap">
+    <video class="intro-video" autoplay muted loop playsinline preload="auto">
+      <source src="assets/intro.mp4" type="video/mp4" />
+    </video>
+    <div class="intro-grad"></div>
+    <div id="intro-flash" class="intro-flash"></div>
+    <div class="intro-cta">
+      <div class="intro-card">
+        <svg class="intro-heart" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        </svg>
+        <p class="intro-share">يسعدنا مشاركتكم</p>
+        <p class="intro-names">أحمد &amp; هايدي</p>
+        <p class="intro-moment">لحظة بداية حياتنا</p>
+        <button id="start-btn" class="btn-gold" style="width:100%;">ابدأ الدعوة ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Curtain panels for transition ===== -->
+  <div id="curtain-left" class="curtain left"><span class="strip"></span></div>
+  <div id="curtain-right" class="curtain right"><span class="strip"></span></div>
+  <div id="spark" class="spark">✦</div>
+
+  <!-- ===== Main content ===== -->
+  <main class="bg-gradient-sky floral-bg" style="position:relative; min-height:100vh; overflow:hidden;">
+
+    <!-- HERO -->
+    <section class="hero">
+      <img class="floral tl" src="assets/floral-corner.png" alt="" aria-hidden="true" loading="lazy" />
+      <img class="floral br" src="assets/floral-corner.png" alt="" aria-hidden="true" loading="lazy" />
+
+      <div class="hero-mono">
+        <div><img src="assets/hero.jpeg" alt="Ahmed & Haidy" /></div>
+      </div>
+
+      <div class="gold-divider w-40 mt-6 mb-6"></div>
+      <p class="hero-tag">بداية فصلٍ جديد من رحلتنا</p>
+      <p class="hero-sub">في رحلة حبٍ كتبها القدر، نلتقي اليوم لنبدأ أول فصول رحلتنا التي لا تنتهي.</p>
+
+      <div class="scroll-ind">
+        <span>اكتشف</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- NAMES + COUNTDOWN + INFO -->
+    <section class="section pad-lg">
+      <div class="luxury-card names-card card-frame">
+        <div class="center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold mx-auto">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+          <p class="small mt-3">يسعدنا حضوركم</p>
+          <h2>أحمد</h2>
+          <p class="amp">و</p>
+          <h2>هايدي</h2>
+          <div class="gold-divider w-48 mx-auto mt-8 mb-8" style="margin-top:2rem;margin-bottom:2rem;"></div>
+          <p class="lead">في رحلة حبٍ كتبها القدر قبل أن نلتقي، جمعنا الطريق دون موعد، حتى أصبحنا وجهة لبعضنا البعض. واليوم نبدأ أول فصول رحلتنا التي لا تنتهي.</p>
+
+          <div style="margin-top:2.5rem;margin-bottom:1.5rem;">
+            <p class="cd-label">العد التنازلي</p>
+            <div class="cd-row">
+              <div class="cd-cell"><div class="luxury-card cd-box"><span id="cd-sec">00</span></div><span class="lbl">ثانية</span></div>
+              <span class="cd-sep">:</span>
+              <div class="cd-cell"><div class="luxury-card cd-box"><span id="cd-min">00</span></div><span class="lbl">دقيقة</span></div>
+              <span class="cd-sep">:</span>
+              <div class="cd-cell"><div class="luxury-card cd-box"><span id="cd-hr">00</span></div><span class="lbl">ساعة</span></div>
+              <span class="cd-sep">:</span>
+              <div class="cd-cell"><div class="luxury-card cd-box"><span id="cd-day">00</span></div><span class="lbl">يوم</span></div>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-cell">
+              <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></div>
+              <span class="key">التاريخ</span>
+              <span class="val">١٨ / ٥ / ٢٠٢٦</span>
+            </div>
+            <div class="info-cell">
+              <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <span class="key">الساعة</span>
+              <span class="val">٧:٠٠ مساءً</span>
+            </div>
+            <div class="info-cell">
+              <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <span class="key">المكان</span>
+              <span class="val">فندق صن رايز ازور سابقاً — سيدي جابر</span>
+            </div>
+          </div>
+
+          <a href="#story" class="btn-gold" style="margin-top:3rem;">قصتنا ✦</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="story-section">
+      <div class="inner">
+        <div class="mb-6" style="margin-bottom:3rem;">
+          <p class="kicker">رحلتنا</p>
+          <h3>كيف بدأنا</h3>
+          <div class="gold-divider w-32 mx-auto mt-6"></div>
+        </div>
+        <div class="story-grid">
+          <div class="story-card">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <h4>اللقاء الأول</h4>
+            <p>حيث بدأت القصة بنظرة وابتسامة، في صدفة لم تكن في الحسبان ولكنها كانت أجمل أقدارنا.</p>
+          </div>
+          <div class="story-card shift">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>
+              </svg>
+            </div>
+            <h4>الخطوبة</h4>
+            <p>يوم أعلنا فيه حبنا للعالم، وتعاهدنا على أن نمضي معاً في دروب الحياة.</p>
+          </div>
+          <div class="story-card">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h4>يوم الزفاف</h4>
+            <p>تتويجاً لحبنا، ننتظركم لتشاركونا فرحتنا في هذا اليوم الاستثنائي.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILY -->
+    <section class="family">
+      <div class="inner">
+        <svg class="lead-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h3>عائلتنا</h3>
+        <div class="gold-divider w-24 mx-auto mt-6"></div>
+        <p>بفضل دعواتهم ودعمهم المستمر، وصلنا إلى هذا اليوم السعيد. نشكر عائلاتنا من أعماق قلوبنا على كل الحب والتضحيات التي قدموها لنا طوال حياتنا.</p>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location">
+      <div class="luxury-card location-card card-frame">
+        <div class="head">
+          <p class="kicker">الموقع</p>
+          <h3>فندق <span class="text-gold">صن رايز الأسكندرية</span></h3>
+          <div class="gold-divider w-32 mx-auto mt-6"></div>
+        </div>
+        <div class="map-wrap gold-border shadow-soft">
+          <iframe title="موقع الحفل"
+            src="https://www.google.com/maps?q=Sunrise+Alex+Avenue+Hotel+Sidi+Gaber+Alexandria&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="center" style="margin-top:1.25rem;">
+          <a class="btn-gold" href="https://maps.app.goo.gl/nTsMTJ8VqrYGnd288" target="_blank" rel="noreferrer"
+             style="padding:.75rem 2rem;">Location</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
